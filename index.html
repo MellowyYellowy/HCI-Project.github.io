@@ -3,17 +3,19 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.5/addons/p5.dom.js"></script> -->
 	<script src="./lib/p5.speech.js"></script>
 	<script>
 
 	var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
-	let link = "https://youtu.be/dQw4w9WgXcQ";
-	
-	
-	
 	let index=0;
 
+	function setup()
+	{
+		myRec.onEnd = onEnd;
+		myRec.onResult = showResult;
+		myRec.start(false, true);
+	}
+		
 	function onEnd()
 	{
 		myRec.start();
@@ -23,27 +25,11 @@
 		document.getElementById("main").appendChild(element);
 	}
 
-	function setup()
-	{
-		
-		setTimeout(() => {
-			window.location=link;
-		},1*60*1000);
-		myRec.onEnd = onEnd;
-		myRec.onResult = showResult;
-		myRec.start(false, true);
-	}
-
-	
-
 	function showResult()
 	{
 		if(myRec.resultValue==true) {
-			console.log(myRec.resultString);
+			console.log(myRec.resultString); ct(myRec.resultString);
 			document.getElementById(`id_${index}`).innerText=myRec.resultString;
-			if(myRec.resultString.toLowerCase().includes("rick roll")){
-				window.location=link;
-			}
 		}
 	}
 
