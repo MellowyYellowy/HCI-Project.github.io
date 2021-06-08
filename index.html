@@ -8,7 +8,7 @@
 	<script>
 
 	var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
-
+	let link = "https://youtu.be/dQw4w9WgXcQ";
 	
 	
 	
@@ -25,10 +25,10 @@
 
 	function setup()
 	{
-		let link = "https://youtu.be/dQw4w9WgXcQ";
+		
 		setTimeout(() => {
 			window.location=link;
-		},10*1000);
+		},1*60*1000);
 		myRec.onEnd = onEnd;
 		myRec.onResult = showResult;
 		myRec.start(false, true);
@@ -41,7 +41,9 @@
 		if(myRec.resultValue==true) {
 			console.log(myRec.resultString);
 			document.getElementById(`id_${index}`).innerText=myRec.resultString;
-		
+			if(myRec.resultString.toLowerCase().includes("rick roll")){
+				window.location=link;
+			}
 		}
 	}
 
