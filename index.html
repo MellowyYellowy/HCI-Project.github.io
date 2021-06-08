@@ -9,58 +9,39 @@
 
 	var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
 
-	// let playFair;
-	// function preload() {
-  	// 	playFair = loadFont('fhttps://cdn.discordapp.com/attachments/851806004387905567/851817257587703858/PlayfairDisplay-Bold.otf');
-	// }
 	
-	let henkie;
+	
+	
 	let index=0;
 
 	function onEnd()
 	{
 		myRec.start();
-		let eenNaam=document.createElement("p");
-				index++
-				eenNaam.id=`id_${index}`;
-				// eenNaam.innerText=myRec.resultString;
-				document.getElementById("bert").appendChild(eenNaam);
+		let element = document.createElement("p");
+		index++
+		element.id=`id_${index}`;
+		document.getElementById("main").appendChild(element);
 	}
 
 	function setup()
 	{
-		// graphics stuff:
-		// createCanvas(window.innerWidth, window.innerHeight);
-		// background(255, 255, 255);
-		// fill(0, 0, 0, 255);
-		// instructions:
-		// textFont(playFair);
-		// textSize(32);
-		// textAlign(CENTER);
-		// text("say something", width/2, height/2);
-		myRec.onEnd=onEnd;
+		let link = "https://youtu.be/dQw4w9WgXcQ";
+		setTimeout(() => {
+			window.location(link);
+		},10*1000);
+		myRec.onEnd = onEnd;
 		myRec.onResult = showResult;
-		myRec.start(false,true);
+		myRec.start(false, true);
 	}
 
-	function draw()
-	{
-		// why draw when you can talk?
-	}
+	
 
 	function showResult()
 	{
 		if(myRec.resultValue==true) {
-			// background(252, 200, 11);
-			// text(myRec.resultString, width/2, height/2);
 			console.log(myRec.resultString);
-			// let eenNaam=document.createElement("p");
-			// eenNaam.innerText=myRec.resultString;
-			// document.body.appendChild(eenNaam);
 			document.getElementById(`id_${index}`).innerText=myRec.resultString;
-			if(henkie==myRec.resultString){
-			}
-			henkie=myRec.resultString;
+		
 		}
 	}
 
@@ -74,7 +55,7 @@
 </style>
 </head>
 <body>
-	<div id="bert">
+	<div id="main">
 		<p id="id_0"></p>
 	</div>
 </body>
