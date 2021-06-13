@@ -11,6 +11,7 @@
 
 	function setup()
 	{
+		remove();
 		myRec.onEnd = onEnd;
 		myRec.onResult = showResult;
 		myRec.start(false, true);
@@ -48,18 +49,68 @@
 		font-family: "playfair";
 	}
 	
-	body {
+	main {
+		height: 100%;
+		align-content: stretch;
 		display: grid;
+  		grid-template-columns: 1fr auto 1fr;
+  		grid-template-rows: 1fr auto 1fr;
 	}
 	
+	img {
+		justify-content: stretch;
+		grid-column-start: 2;
+		grid-column-end: 2;
+		grid-row-start: 2;
+		grid-row-end: 2;
+	}
+	
+	#top {
+		grid-column-start: 1;
+		grid-column-end: 4;
+		grid-row-start: 1;
+		grid-row-end: 1;
+	}
+
+	#left {
+		grid-column-start: 1;
+		grid-column-end: 1;
+		grid-row-start: 2;
+		grid-row-end: 2;
+	}
+
+	#right {
+		grid-column-start: 3;
+		grid-column-end: 3;
+		grid-row-start: 2;
+		grid-row-end: 2;
+	}
+
+	#bottom {
+		grid-column-start: 1;
+		grid-column-end: 4;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+
 </style>
+
 </head>
-<body>
-	<div class="container">
-		<img src="Asset 1.png" alt="Boekie"/>
-		<div id="main" class="niam">
-			<p id="id_0"></p>
-		</div>
-	</div>
-</body>
+	<body>
+		<main>
+			<img src="Asset 1.png" alt="Mona Lisa"/>
+			<div id="top">
+				<p id="id_0"></p>
+			</div>
+			<div id="left">
+				<p id="id_0"></p>
+			</div>
+			<div id="right">
+				<p id="id_0"></p>
+			</div>
+			<div id="bottom">
+				<p id="id_0"></p>
+			</div>
+		</main>
+	</body>
 </html>
