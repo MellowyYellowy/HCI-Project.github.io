@@ -8,7 +8,7 @@
 
 	var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
 	let index=0,
-	Petra=0;
+	berta=0;
 
 	function setup()
 	{
@@ -21,28 +21,22 @@
 	
 	function onEnd()
 	{
-		if(testHeight(document.getElementById(`${Petra}`))) Petra = (Petra + 1) % 4;	//Petra in een string
-
 		myRec.start();
-
-		let element = document.createElement("p");
-		index++
-		element.id=`id_${index}`;
-
-		document.getElementById(`${Petra}`).appendChild(element);		
+		if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;	//berta in een string
+		document.getElementById(`${berta}`).innerText += myRec.resultString + ".";//adds the spoken text to the div
 	}
 
 	function showResult()
 	{
 		if(myRec.resultValue==true) {
 			console.log(myRec.resultString); window.ct(myRec.resultString);
-			document.getElementById(`id_${index}`).innerText=myRec.resultString;
+			// document.getElementById(`id_${index}`).innerText=myRec.resultString;
 		}
 	}
 	
 	function testHeight (element) 
 	{
-		if(element.offsetHeight > element.style.height) {
+		if(element.scrollHeight > element.clientHeight) {
   	 		return true;
 		}
 	}
@@ -68,6 +62,10 @@
 		grid-column-end: 2;
 		grid-row-start: 2;
 		grid-row-end: 2;
+	}
+
+	.text {
+		overflow: hidden;
 	}
 	
 	.top {
@@ -104,16 +102,16 @@
 	<body>
 		<main>
 			<img src="Asset 1.png" alt="Mona Lisa"/>
-			<div id="0" class="top">
-				<p id="id_0"></p>
+			<div id="0" class="top text">
+
 			</div>
-			<div id="1" class="left">
+			<div id="1" class="left text">
 				
 			</div>
-			<div id="2" class="right">
+			<div id="2" class="right text">
 				
 			</div>
-			<div id="3" class="bottom">
+			<div id="3" class="bottom text">
 				
 			</div>
 		</main>
