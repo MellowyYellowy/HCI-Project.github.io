@@ -1,0 +1,75 @@
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+	<script src="./lib/p5.speech.js"></script>
+	<script>
+
+	var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
+	let index=0;
+
+	function setup()
+	{
+		myRec.onEnd = onEnd;
+		myRec.onResult = showResult;
+		myRec.start(false, true);
+	}
+		
+	function onEnd()
+	{
+		myRec.start();
+		let element = document.createElement("p");
+		index++
+		element.id=`id_${index}`;
+		document.getElementById("main").appendChild(element);
+	}
+
+	function showResult()
+	{
+		if(myRec.resultValue==true) {
+			console.log(myRec.resultString); window.ct(myRec.resultString);
+			document.getElementById(`id_${index}`).innerText=myRec.resultString;
+		}
+	}
+
+
+</script>
+<style>
+	*{
+		margin: 0px;
+		font-family: "playfair";
+	}
+	
+	.container {
+		position: relative;
+		width:80%;
+		margin: auto;
+		text-align: top-left;
+	}
+	
+	.niam {
+		position: absolute;
+		width: 300px;
+		top: 80px;
+		left: 190px;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-bottom: 10px;
+	}
+	
+	p {
+		padding-bottom: 5px;
+	}
+	
+</style>
+</head>
+<body>
+	<div class="container">
+		<img src="Beterboekki.jpg" alt="Boekie" style="width:100%;"/>
+		<div id="main" class="niam">
+			<p id="id_0"></p>
+		</div>
+	</div>
+</body>
+</html>
