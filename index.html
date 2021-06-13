@@ -4,115 +4,114 @@
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
 	<script src="./lib/p5.speech.js"></script>
+
 	<script>
+		var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
+		let index = 0, berta = 0;
 
-	var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
-	let index=0,
-	berta=0;
-
-	function setup()
-	{
-		myRec.onEnd = onEnd;
-		myRec.onResult = showResult;
-		myRec.start(false, true);
-		
-		document.getElementsByTagName("canvas")[0].remove();
-	}
-	
-	function onEnd()
-	{
-		myRec.start();
-		if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;	//berta in een string
-		if(myRec.resultValue == true)
-			document.getElementById(`${berta}`).innerText += `${myRec.resultString}. `;		//adds the spoken text to the div
-	}
-
-	function showResult()
-	{
-		if(myRec.resultValue==true) {
-			console.log(myRec.resultString); window.ct(myRec.resultString);
-			// document.getElementById(`id_${index}`).innerText=myRec.resultString;
+		function setup()
+		{
+			myRec.onEnd = onEnd;
+			myRec.onResult = showResult;
+			myRec.start(false, true);
+			
+			document.getElementsByTagName("canvas")[0].remove();
 		}
-	}
+		
+		function onEnd()
+		{
+			myRec.start();
+
+			if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;	//berta in een string
+
+			if(myRec.resultValue == true)
+				document.getElementById(`${berta}`).innerText += `${myRec.resultString}. `;		//adds the spoken text to the div
+		}
+
+		function showResult()
+		{
+			if(myRec.resultValue==true) {
+				console.log(myRec.resultString); window.ct(myRec.resultString);
+			}
+		}
+		
+		function testHeight (element) 
+		{
+			if(element.scrollHeight > element.clientHeight) return true;
+		}
+
+	</script>
 	
-	function testHeight (element) 
-	{
-		if(element.scrollHeight > element.clientHeight) return true;
-	}
+	<style>
+		*{
+			margin: 0px;
+			font-family: "Bebas Neue";
+		}
+		
+		main {
+			height: 100%;
+			align-content: stretch;
+			display: grid;
+			grid-template-columns: 1fr auto 1fr;
+			grid-template-rows: 1fr auto 1fr;
+		}
+		
+		img {
+			justify-content: stretch;
+			grid-column-start: 2;
+			grid-column-end: 2;
+			grid-row-start: 2;
+			grid-row-end: 2;
+		}
 
-</script>
-<style>
-	*{
-		margin: 0px;
-		font-family: "Bebas Neue";
-	}
-	
-	main {
-		height: 100%;
-		align-content: stretch;
-		display: grid;
-  		grid-template-columns: 1fr auto 1fr;
-  		grid-template-rows: 1fr auto 1fr;
-	}
-	
-	img {
-		justify-content: stretch;
-		grid-column-start: 2;
-		grid-column-end: 2;
-		grid-row-start: 2;
-		grid-row-end: 2;
-	}
+		.text {
+			overflow: auto;
+		}
+		
+		.top {
+			grid-column-start: 1;
+			grid-column-end: 4;
+			grid-row-start: 1;
+			grid-row-end: 1;
+		}
 
-	.text {
-		overflow: auto;
-	}
-	
-	.top {
-		grid-column-start: 1;
-		grid-column-end: 4;
-		grid-row-start: 1;
-		grid-row-end: 1;
-	}
+		.left {
+			grid-column-start: 1;
+			grid-column-end: 1;
+			grid-row-start: 2;
+			grid-row-end: 2;
+		}
 
-	.left {
-		grid-column-start: 1;
-		grid-column-end: 1;
-		grid-row-start: 2;
-		grid-row-end: 2;
-	}
+		.right {
+			grid-column-start: 3;
+			grid-column-end: 3;
+			grid-row-start: 2;
+			grid-row-end: 2;
+		}
 
-	.right {
-		grid-column-start: 3;
-		grid-column-end: 3;
-		grid-row-start: 2;
-		grid-row-end: 2;
-	}
+		.bottom {
+			grid-column-start: 1;
+			grid-column-end: 4;
+			grid-row-start: 3;
+			grid-row-end: 4;
+		}
 
-	.bottom {
-		grid-column-start: 1;
-		grid-column-end: 4;
-		grid-row-start: 3;
-		grid-row-end: 4;
-	}
-
-</style>
+	</style>
 
 </head>
-	<body>
-		<main>
-			<img src="Asset 1.png" alt="Mona Lisa"/>
-			<p id="0" class="top text">
 
-			</p>
-			<p id="1" class="left text">
-				
-			</p>
-			<p id="2" class="right text">
-				
-			</p>
-			<p id="3" class="bottom text">
-				
-			</p>
-		</main>
-	</body>
+<body>
+	<main>
+		<img src="Asset 1.png" alt="Mona Lisa"/>
+
+		<p id="0" class="top text"></p>
+
+		<p id="1" class="left text"></p>
+
+		<p id="2" class="right text"></p>
+		
+		<p id="3" class="bottom text"></p>
+	</main>
+</body>
+
 </html>
