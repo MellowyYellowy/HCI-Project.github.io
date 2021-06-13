@@ -21,7 +21,7 @@
 	
 	function onEnd()
 	{
-		if(testHeight(document.getElementById(Petra))) Petra = (Petra + 1) % 4;
+		if(testHeight(document.getElementById(`${Petra}`))) Petra = (Petra + 1) % 4;
 
 		myRec.start();
 
@@ -29,7 +29,7 @@
 		index++
 		element.id=`id_${index}`;
 
-		document.getElementById(Petra).appendChild(element);		
+		document.getElementById(`${Petra}`).appendChild(element);		
 	}
 
 	function showResult()
