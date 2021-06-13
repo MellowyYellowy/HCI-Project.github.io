@@ -36,9 +36,7 @@
 	
 	function testHeight (element) 
 	{
-		if(element.scrollHeight > element.clientHeight) {
-  	 		return true;
-		}
+		if(element.scrollHeight > element.clientHeight) return true;
 	}
 
 </script>
@@ -65,7 +63,7 @@
 	}
 
 	.text {
-		overflow: hidden;
+		overflow: visible;
 	}
 	
 	.top {
