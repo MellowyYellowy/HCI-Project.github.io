@@ -32,6 +32,14 @@
 			document.getElementById(`id_${index}`).innerText=myRec.resultString;
 		}
 	}
+	
+	function thing () 
+	{
+		if(document.getElementById('div').offsetHeight > 
+		document.getElementById('div').style.height) {
+  	 	//do something
+		}
+	}
 
 
 </script>
@@ -42,10 +50,7 @@
 	}
 	
 	body {
-		display: flex;
-		align-content: center;
-		justify-content: center;
-		align-items: center;
+		display: grid;
 	}
 	
 </style>
