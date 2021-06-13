@@ -23,7 +23,8 @@
 	{
 		myRec.start();
 		if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;	//berta in een string
-		document.getElementById(`${berta}`).innerText += ` ${myRec.resultString}. &#160;`;		//adds the spoken text to the div
+		if(myRec.resultValue == true)
+			document.getElementById(`${berta}`).innerText += `${myRec.resultString}. `;		//adds the spoken text to the div
 	}
 
 	function showResult()
@@ -63,7 +64,7 @@
 	}
 
 	.text {
-		overflow: visible;
+		overflow: auto;
 	}
 	
 	.top {
@@ -100,18 +101,18 @@
 	<body>
 		<main>
 			<img src="Asset 1.png" alt="Mona Lisa"/>
-			<div id="0" class="top text">
+			<p id="0" class="top text">
 
-			</div>
-			<div id="1" class="left text">
+			</p>
+			<p id="1" class="left text">
 				
-			</div>
-			<div id="2" class="right text">
+			</p>
+			<p id="2" class="right text">
 				
-			</div>
-			<div id="3" class="bottom text">
+			</p>
+			<p id="3" class="bottom text">
 				
-			</div>
+			</p>
 		</main>
 	</body>
 </html>
