@@ -7,14 +7,16 @@
 	<script>
 
 	var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
-	let index=0;
+	let index=0,
+	Petra=0;
 
 	function setup()
 	{
-		remove();
+		Petra = Petra + 1 % 4;
 		myRec.onEnd = onEnd;
 		myRec.onResult = showResult;
 		myRec.start(false, true);
+		remove();
 	}
 		
 	function onEnd()
@@ -23,7 +25,27 @@
 		let element = document.createElement("p");
 		index++
 		element.id=`id_${index}`;
-		document.getElementById("top").appendChild(element);
+		switch (Petra) {
+			case 0:
+				document.getElementById("top").appendChild(element);
+				break;
+			case 1:
+				document.getElementById("left").appendChild(element);
+				break;
+			case 2:
+				document.getElementById("right").appendChild(element);
+				break;
+			case 3:
+				document.getElementById("bottom").appendChild(element);
+				break;
+			default:
+				break;
+		}
+		
+		
+		
+		
+
 	}
 
 	function showResult()
