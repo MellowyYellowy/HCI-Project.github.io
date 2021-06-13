@@ -16,7 +16,8 @@
 		myRec.onEnd = onEnd;
 		myRec.onResult = showResult;
 		myRec.start(false, true);
-		remove();
+		
+		document.getElementsByTagName("canvas")[0].remove();
 	}
 		
 	function onEnd()
