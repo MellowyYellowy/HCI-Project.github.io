@@ -23,7 +23,7 @@
 	{
 		myRec.start();
 		if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;	//berta in een string
-		document.getElementById(`${berta}`).innerText += myRec.resultString + `. `;		//adds the spoken text to the div
+		document.getElementById(`${berta}`).innerText += `${myRec.resultString}. `;		//adds the spoken text to the div
 	}
 
 	function showResult()
