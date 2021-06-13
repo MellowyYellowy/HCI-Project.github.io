@@ -21,7 +21,8 @@
 	
 	function onEnd()
 	{
-		Petra = (Petra + 1) % 4;
+		if(testHeight()) Petra = (Petra + 1)%4;
+
 		myRec.start();
 
 		let element = document.createElement("p");
@@ -54,11 +55,10 @@
 		}
 	}
 	
-	function thing () 
+	function testHeight (element) 
 	{
-		if(document.getElementById('div').offsetHeight > 
-		document.getElementById('div').style.height) {
-  	 		//do  hello test
+		if(element.offsetHeight > element.style.height) {
+  	 		return true;
 		}
 	}
 
