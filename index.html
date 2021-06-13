@@ -21,7 +21,7 @@
 	
 	function onEnd()
 	{
-		if(testHeight()) Petra = (Petra + 1)%4;
+		if(testHeight(document.getElementById(Petra))) Petra = (Petra + 1) % 4;
 
 		myRec.start();
 
@@ -29,22 +29,7 @@
 		index++
 		element.id=`id_${index}`;
 
-		switch (Petra) {
-			case 0:
-				document.getElementById("top").appendChild(element);
-				break;
-			case 1:
-				document.getElementById("left").appendChild(element);
-				break;
-			case 2:
-				document.getElementById("right").appendChild(element);
-				break;
-			case 3:
-				document.getElementById("bottom").appendChild(element);
-				break;
-			default:
-				break;
-		}
+		document.getElementById(Petra).appendChild(element);		
 	}
 
 	function showResult()
@@ -85,28 +70,28 @@
 		grid-row-end: 2;
 	}
 	
-	#top {
+	#0 {
 		grid-column-start: 1;
 		grid-column-end: 4;
 		grid-row-start: 1;
 		grid-row-end: 1;
 	}
 
-	#left {
+	#1 {
 		grid-column-start: 1;
 		grid-column-end: 1;
 		grid-row-start: 2;
 		grid-row-end: 2;
 	}
 
-	#right {
+	#2 {
 		grid-column-start: 3;
 		grid-column-end: 3;
 		grid-row-start: 2;
 		grid-row-end: 2;
 	}
 
-	#bottom {
+	#3 {
 		grid-column-start: 1;
 		grid-column-end: 4;
 		grid-row-start: 3;
@@ -119,16 +104,16 @@
 	<body>
 		<main>
 			<img src="Asset 1.png" alt="Mona Lisa"/>
-			<div id="top">
+			<div id="0">
 				<p id="id_0"></p>
 			</div>
-			<div id="left">
+			<div id="1">
 				
 			</div>
-			<div id="right">
+			<div id="2">
 				
 			</div>
-			<div id="bottom">
+			<div id="3">
 				
 			</div>
 		</main>
