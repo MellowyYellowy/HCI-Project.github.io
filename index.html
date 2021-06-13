@@ -12,20 +12,22 @@
 
 	function setup()
 	{
-		Petra = Petra + 1 % 4;
 		myRec.onEnd = onEnd;
 		myRec.onResult = showResult;
 		myRec.start(false, true);
 		
 		document.getElementsByTagName("canvas")[0].remove();
 	}
-		
+	
 	function onEnd()
 	{
+		Petra = (Petra + 1) % 4;
 		myRec.start();
+
 		let element = document.createElement("p");
 		index++
 		element.id=`id_${index}`;
+
 		switch (Petra) {
 			case 0:
 				document.getElementById("top").appendChild(element);
@@ -42,11 +44,6 @@
 			default:
 				break;
 		}
-		
-		
-		
-		
-
 	}
 
 	function showResult()
