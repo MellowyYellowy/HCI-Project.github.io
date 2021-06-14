@@ -48,16 +48,23 @@
 			font-family: "Bebas Neue";
 		}
 		
+		body {
+			display: flex;
+			align-items: center;
+		}
+		
 		main {
+			margin: auto;
 			height: 100%;
 			align-content: stretch;
 			display: grid;
-			grid-template-columns: 500px auto 500px;
-			grid-template-rows: 500px auto 500px;
+			grid-template-columns: 180px 303px 180px;
+			grid-template-rows: 180px 388px 180px;
 		}
 		
 		img {
-			justify-content: stretch;
+			padding: 20px;
+			justify-content: center;
 			grid-column-start: 2;
 			grid-column-end: 2;
 			grid-row-start: 2;
