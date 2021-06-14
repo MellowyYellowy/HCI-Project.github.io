@@ -26,7 +26,7 @@
 			
 
 			if(myRec.resultValue == true){
-				if(myRec.resultString == hendrik) return
+				if(myRec.resultString == hendrik && myRec.resultString != "") return;
 				document.getElementById(`${berta}`).innerText += ` ${myRec.resultString}.`; //adds the spoken text to the div
 
 				let o = overFlow(document.getElementById(`${berta}`))
