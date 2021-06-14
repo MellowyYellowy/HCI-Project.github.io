@@ -20,14 +20,22 @@
 		
 		function onEnd()
 		{
-			myRec.start();
+			myRec.start(false, true);
+			console.log(myRec.resultValue)
+			
 
 			if(myRec.resultValue == true){
-				//berta in een string
-				if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;
-				
-				document.getElementById(`${berta}`).innerText += ` ${myRec.resultString}.`;
-			}		//adds the spoken text to the div
+				document.getElementById(`${berta}`).innerText += ` ${myRec.resultString}.`; //adds the spoken text to the div
+
+				let o = overFlow(document.getElementById(`${berta}`))
+
+				if(o){
+					berta = (berta + 1) % 4
+					document.getElementById(`${berta}`).innerText = o
+				}
+
+				//if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4; //berta in een string
+			}		
 		}
 
 		function showResult()
@@ -40,6 +48,19 @@
 		function testHeight (element) 
 		{
 			if(element.scrollHeight > element.clientHeight) return true;
+		}
+
+		function overFlow(element)
+		{
+			if(!testHeight(element)) return false
+
+			let overflow = []
+			let words = element.innerText.split(' ')
+			while(testHeight(element)){
+				overflow.unshift(words.pop())
+				element.innerText = words.join(' ');
+			}
+			return overflow.join(' ')
 		}
 
 	</script>
@@ -114,7 +135,7 @@
 	<main>
 		<img src="Asset 1.png" alt="Mona Lisa"/>
 
-		<p id="0" class="top text"></p>
+		<p id="0" class="top text">kghkdjkhn ngjkl nlhndjnh ndslk  dkbjkn dkbnkdnkkghkdjkhn ngjkl nlhndjnh ndslk gh nsdgildsdjkljdlnbkjlncxvjkbn kj kb  dkbjkn dkbnkdnkkghkdjkhn ngjkl nlhndjnh ndslk gh nsdgildsdjkljdlnbkjlncxvjkbn kj kb  dkbjkn dkbnkdnkkghkdjkhn ngjkl nlhndjnh ndslk gh nsdgildsdjkljdlnj kb  dkbjkn dkbnkdnk</p>
 
 		<p id="1" class="left text"></p>
 
