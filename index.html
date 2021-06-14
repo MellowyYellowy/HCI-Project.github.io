@@ -22,10 +22,12 @@
 		{
 			myRec.start();
 
-			if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;	//berta in een string
-
-			if(myRec.resultValue == true)
-				document.getElementById(`${berta}`).innerText += ` ${myRec.resultString}.`;		//adds the spoken text to the div
+			if(myRec.resultValue == true){
+				//berta in een string
+				if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4;
+				
+				document.getElementById(`${berta}`).innerText += ` ${myRec.resultString}.`;
+			}		//adds the spoken text to the div
 		}
 
 		function showResult()
