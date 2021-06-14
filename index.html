@@ -8,6 +8,7 @@
 	<script>
 		var myRec = new p5.SpeechRec(); // new P5.SpeechRec object
 		let index = 0, berta = 0;
+		let hendrik = "";
 
 		function setup()
 		{
@@ -25,6 +26,7 @@
 			
 
 			if(myRec.resultValue == true){
+				if(myRec.resultString == hendrik) return
 				document.getElementById(`${berta}`).innerText += ` ${myRec.resultString}.`; //adds the spoken text to the div
 
 				let o = overFlow(document.getElementById(`${berta}`))
@@ -33,6 +35,7 @@
 					berta = (berta + 1) % 4
 					document.getElementById(`${berta}`).innerText = o
 				}
+				hendrik = myRec.resultString;
 
 				//if(testHeight(document.getElementById(`${berta}`))) berta = (berta + 1) % 4; //berta in een string
 			}		
@@ -61,6 +64,11 @@
 				element.innerText = words.join(' ');
 			}
 			return overflow.join(' ')
+		}
+
+		function stop()
+		{
+			if(myRec.resultValue)
 		}
 
 	</script>
